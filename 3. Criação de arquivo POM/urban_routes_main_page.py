@@ -7,8 +7,8 @@ class UrbanRoutesPage:
     FROM_LOCATOR = (By.ID, 'from')
     TO_LOCATOR = (By.ID, 'to')
     PERSONAL_OPTION_LOCATOR = (By.XPATH, '//div[text()="Personal"]')
-    BIKE_ICON_LOCATOR = ...
-    BIKE_TEXT_LOCATOR = ...
+    BIKE_ICON_LOCATOR = (By.XPATH, '//img[@src="/static/media/bike.fb41c762.svg"]')
+    BIKE_TEXT_LOCATOR = (By.XPATH, '//div[contains(text(),"Bicicleta")]')
 
     def __init__(self, driver):
         self.driver = driver  # Inicializar o driver
@@ -23,12 +23,12 @@ class UrbanRoutesPage:
 
     def click_personal_option(self):
         # Clicar Personal
-        ...
+        self.driver.find_element(*self.PERSONAL_OPTION_LOCATOR).click()
 
     def click_bike_icon(self):
         # Clicar no ícone Bicicleta
-        ...
+        self.driver.find_element(*self.BIKE_ICON_LOCATOR).click()
 
     def get_bike_text(self):
         # Retornar o texto "Bicicleta"
-        ...
+        return self.driver.find_element(*self.BIKE_TEXT_LOCATOR).text
